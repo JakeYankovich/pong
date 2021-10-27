@@ -30,7 +30,7 @@ lose = False
 won = False
 startingtext = ""
 bgcolor= (100, 100, 100)
-
+score = [0, 0]
 def newballcolor():
     R = random.randint(100,255)
     G = random.randint(100,255)
@@ -123,13 +123,25 @@ while run:
     
     if youlose.collidepoint(ball[0], ball[1]): #check if ball goes off left side
         lose = True
-        startingtext = "YOU LOSE"
+        #startingtext = "YOU LOSE"
+        ball = [300, 300, 25, 25]
+        ballxvel = -4
+        ballyvel = -2
+        score[1] += 1
     if youwin.collidepoint(ball[0]+25, ball[1]): #check if ball goes off left side
         won = True
-        startingtext = "YOU WIN"
+        #startingtext = "YOU WIN"
+        ball = [300, 300, 25, 25]
+        ballxvel = -4
+        ballyvel = -2
+        score[0] += 1
     if lose or won:            #tells you that you won/lost
         textsurface = myfont.render(startingtext, False, white)
         win.blit(textsurface,(100,60))
+    scoretext = "score " + str( score[0] ) + " | " + str( score[1]  )
+    #print(scoretext)
+    scoresurface = myfont.render( scoretext, False, white)
+    win.blit(scoresurface, (200, 80))
     
     collide = losercollide = False
     pygame.display.update() #draw the screen with whatever changes you've made above
