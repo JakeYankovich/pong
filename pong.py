@@ -16,7 +16,7 @@ gameSpeed = 20 #lower is faster
 
 run = True
 ball = [300, 300, 25, 25]
-ballxvel = -4
+ballxvel = -6
 ballyvel = -2
 playerbar = [10, 0, 25, 100]
 loserbar = [615, 200, 25, 100]
@@ -68,7 +68,7 @@ while run:
         loserbar[1] += ballyvel/2
     else: loserbar[1] += ballyvel*2/3
     #if loserbar[1] > ball[1]:
-    loserbar[1] -= (  loserbar[1] - (ball[1]  )  )/14
+    loserbar[1] -= (  loserbar[1] - (ball[1]  )  )/16
     '''else:
         loserbar[1] -= (loserbar[1] - ball[1])/15 + 1'''
         
@@ -96,7 +96,7 @@ while run:
     collide=False                           #check if player hits ball
     if rectbar.collidepoint(ball[0], ball[1]) or rectbar.collidepoint(ball[0], ball[1]+25):
         collide = True
-        ballcolor, bgcolor = newballcolor()
+        #ballcolor, bgcolor = newballcolor()
     if collide:
         ballxvel = abs(ballxvel)
         ballyvel = ballyvel + dy
@@ -108,22 +108,23 @@ while run:
     losercollide=False
     if rectloser.collidepoint(ball[0]+25, ball[1]) or rectloser.collidepoint(ball[0]+25, ball[1]+25):
         losercollide = True
-        ballcolor, bgcolor = newballcolor()
+        #ballcolor, bgcolor = newballcolor()
     if losercollide:
         ballxvel = -abs(ballxvel)
     
     
     if ceiling.collidepoint(ball[0], ball[1]):  #check ceiling collision
-        ballcolor, bgcolor = newballcolor()
+        #ballcolor, bgcolor = newballcolor()
         ballyvel = abs(ballyvel)
     if floor.collidepoint(ball[0], ball[1]+25): #check floor collision
-        ballcolor, bgcolor = newballcolor()
+        #ballcolor, bgcolor = newballcolor()
         ballyvel = -abs(ballyvel)
         
     
     if youlose.collidepoint(ball[0], ball[1]): #check if ball goes off left side
         lose = True
         #startingtext = "YOU LOSE"
+        ballcolor, bgcolor = newballcolor()
         ball = [300, 300, 25, 25]
         ballxvel = -4
         ballyvel = -2
@@ -131,6 +132,7 @@ while run:
     if youwin.collidepoint(ball[0]+25, ball[1]): #check if ball goes off left side
         won = True
         #startingtext = "YOU WIN"
+        ballcolor, bgcolor = newballcolor()
         ball = [300, 300, 25, 25]
         ballxvel = -4
         ballyvel = -2
