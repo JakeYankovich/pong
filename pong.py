@@ -22,8 +22,8 @@ playerbar = [10, 0, 25, 100]
 loserbar = [615, 200, 25, 100]
 white = (255, 255, 255)
 ballcolor = (255, 255, 255)
-ceiling = pygame.Rect(0, -10, 650, 10)
-floor = pygame.Rect(0, 450, 650, 10)
+ceiling = pygame.Rect(0, -15, 650, 15)
+floor = pygame.Rect(0, 450, 650, 15)
 youlose = pygame.Rect(0, 0, 5, 450)
 youwin = pygame.Rect(645, 0, 5, 450)
 lose = False
@@ -92,7 +92,7 @@ while run:
     ball[1] += ballyvel
     
     
-    rectbar = pygame.Rect(playerbar[0]+15, playerbar[1], playerbar[2]-15, playerbar[3])
+    rectbar = pygame.Rect(playerbar[0]+5, playerbar[1], playerbar[2]-5, playerbar[3])
     collide=False                           #check if player hits ball
     if rectbar.collidepoint(ball[0], ball[1]) or rectbar.collidepoint(ball[0], ball[1]+25):
         collide = True
